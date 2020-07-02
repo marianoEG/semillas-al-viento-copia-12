@@ -6,6 +6,7 @@ class Planta {
 	method esFuerte(){ return self.horasDeSolToleradas() > 9}
 	method daNuevasSemillas() { return self.esFuerte() }
 	method espacioQueOcupa()
+	method esIdeal(parcela)
 	
 }
 

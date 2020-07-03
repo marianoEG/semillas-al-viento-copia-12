@@ -1,0 +1,22 @@
+import parcelas.*
+import plantas.*
+describe "parcelas"{
+	const parcela1 = new Parcela(largo=1,ancho=10,horasDeSolPorDia=10,tipoDeParcela="ecologica")
+	
+	test "parcela"{
+		assert.equals(parcela1.superficie(),10)
+		assert.equals(parcela1.cantidadDePlantasToleradas(),5)
+		
+		parcela1.plantarUna(new Soja(anoDeObtencion=2010,altura=1.5))
+		parcela1.plantarUna(new Soja(anoDeObtencion=2010,altura=1.5))
+		parcela1.plantarUna(new Soja(anoDeObtencion=2010,altura=1.5))
+		parcela1.plantarUna(new Soja(anoDeObtencion=2010,altura=1.5))
+		parcela1.plantarUna(new Soja(anoDeObtencion=2010,altura=1.5))
+		assert.notThat(parcela1.tieneSangreJoven())
+		assert.throwsExceptionWithMessage("ya no se puede plantar mas",{parcela1.plantarUna(new Soja(anoDeObtencion=2010,altura=1.5))})
+		
+		assert.notThat(parcela1.seAsociaBien(new Soja(anoDeObtencion=2010,altura=1.2)))
+		
+	}
+} 
+

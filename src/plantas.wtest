@@ -1,0 +1,34 @@
+import plantas.*
+describe "plantas"{
+	const menta1 = new Menta(anoDeObtencion=2007,altura=1)
+	const menta2 = new Menta(anoDeObtencion=2007,altura=0.3)
+	
+	const soja1 = new Soja(anoDeObtencion=2009,altura=0.6)
+	
+	const quinoa1 = new Quinoa(anoDeObtencion=2010,altura=0.5,espacioOcupado=0.2)
+	const quinoa2 = new Quinoa(anoDeObtencion=2003,altura=0.5,espacioOcupado=0.9)
+	
+	const hierbaBuenarda = new Hierbabuena(anoDeObtencion=2007,altura=1)
+	
+	test "menta"{
+		assert.equals(menta1.espacioQueOcupa(),3)
+		assert.that(menta1.daNuevasSemillas())
+		assert.equals(menta2.espacioQueOcupa(),0.9)
+		assert.notThat(menta2.daNuevasSemillas())
+	}
+	
+	test "soja"{
+		assert.equals(soja1.horasDeSolToleradas(),8)
+		assert.notThat(soja1.daNuevasSemillas())
+		assert.equals(soja1.espacioQueOcupa(),0.3)
+	}
+	
+	test "quinoa"{
+		assert.that(quinoa1.daNuevasSemillas())
+		assert.that(quinoa2.daNuevasSemillas())
+	}
+	
+	test "hierbabuena"{
+		assert.equals(hierbaBuenarda.espacioQueOcupa(),6)
+	}
+}

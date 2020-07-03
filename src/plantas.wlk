@@ -1,3 +1,4 @@
+import parcelas.*
 class Planta {
 	const property anoDeObtencion
 	var property altura

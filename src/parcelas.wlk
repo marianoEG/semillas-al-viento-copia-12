@@ -4,7 +4,7 @@ class Parcela {
 	const property ancho
 	const property horasDeSolPorDia
 	const property plantas = #{}
-	const property tipoDeParcela
+	const property tipoDeParcela 
 	
 	method agregarPlanta(cual){ plantas.add(cual)}
 	method quitarPlanta(cual){ plantas.remove(cual)}
@@ -22,13 +22,12 @@ class Parcela {
 		else { plantas.add(planta)}
 	}
 	method esIdealPara(planta){ return planta.esIdeal(self) }
+	method esEcologica(){return self.tipoDeParcela() == "ecologica" }
+	method esIndustrial(){return self.tipoDeParcela() == "industrial" }
 	method seAsociaBien(planta){
-		return 
-			if (self.tipoDeParcela() == ecologica){self.esIdealPara(planta) and self.tieneSangreJoven()}
-			else if (self.tipoDeParcela() == industrial){self.plantas().size() <= 2 and planta.esFuerte()}
-			else {self.error("es un tipo de parcela desconocido")}
+		if (self.esEcologica()) {return planta.esIdeal(self) and self.tieneSangreJoven() }
+		else if (self.esIndustrial()) {return planta.esFuerte() and self.plantas().size() <= 2}
+		else {return "tipo de parcela desconocida"}
 	}
 }
 
-object ecologica{}
-object industrial{}

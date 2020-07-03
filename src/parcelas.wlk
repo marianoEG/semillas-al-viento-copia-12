@@ -27,7 +27,9 @@ class Parcela {
 	method seAsociaBien(planta){
 		if (self.esEcologica()) {return planta.esIdeal(self) and self.tieneSangreJoven() }
 		else if (self.esIndustrial()) {return planta.esFuerte() and self.plantas().size() <= 2}
-		else {return "tipo de parcela desconocida"}
+		else {return false}
 	}
+	method cantidadDePlantasBienAsociadas(){ return plantas.filter({planta=>self.seAsociaBien(planta)}).size()}
+	method porcentajeDePlantasAsociadas(){ return (self.cantidadDePlantasBienAsociadas() *  100) / self.plantas().size() }
 }
 

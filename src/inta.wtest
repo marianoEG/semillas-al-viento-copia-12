@@ -1,0 +1,34 @@
+import inta.*
+import parcelas.*
+import plantas.*
+describe "inta"{
+	const menta1 = new Menta(anoDeObtencion=2015,altura=1)
+	const menta2 = new Menta(anoDeObtencion=2017,altura=1)
+	const menta3 = new Menta(anoDeObtencion=2017,altura=1)
+	const menta4 = new Menta(anoDeObtencion=2017,altura=1)
+	const menta5 = new Menta(anoDeObtencion=2017,altura=1)
+	const mentaVieja = new Menta(anoDeObtencion=2000,altura=1)
+	const mentaVieja1 = new Menta(anoDeObtencion=2000,altura=1)
+	const mentaVieja2 = new Menta(anoDeObtencion=2000,altura=1)
+	const mentaVieja3 = new Menta(anoDeObtencion=2000,altura=1)
+	const mentaVieja4 = new Menta(anoDeObtencion=2000,altura=1)
+	
+	const sojaDebil1 = new Soja(anoDeObtencion=2015,altura=0.3)
+	const sojaDebil2 = new Soja(anoDeObtencion=2015,altura=0.3)
+	
+	const mejorParcela = new Parcela(largo=1,ancho=10,horasDeSolPorDia=10,tipoDeParcela="ecologica",plantas=#{menta1,menta2,menta3,menta4,menta5})
+	const parcela2 = new Parcela(largo=1,ancho=2,horasDeSolPorDia=10,tipoDeParcela="ecologica",plantas=#{mentaVieja,mentaVieja1,mentaVieja2,mentaVieja3,mentaVieja4})
+	const parcela3 = new Parcela(largo=1,ancho=10,horasDeSolPorDia=10,tipoDeParcela="ecologica",plantas=#{menta1,menta2,menta3,sojaDebil1})
+	const parcela4 = new Parcela(largo=1,ancho=10,horasDeSolPorDia=10,tipoDeParcela="ecologica",plantas=#{menta1,sojaDebil1,sojaDebil2,menta3,menta4})
+	
+	test "inta"{
+		inta.parcelas([mejorParcela,parcela2,parcela3,parcela4])
+		
+		assert.equals(inta.promedioDePlantasPorParcela(),4.75)
+		
+		assert.equals(inta.parcelaMasAutoSustentable(),mejorParcela)
+	}
+	
+}
+
+
